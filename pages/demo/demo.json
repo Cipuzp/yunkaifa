@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "t-divider": "/miniprogram_npm/tdesign-miniprogram/divider/divider"
+    },
+    "navigationBarTitleText": "商品列表"
+}

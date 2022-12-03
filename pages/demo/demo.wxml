@@ -1,0 +1,28 @@
+<!--pages/demo/demo.wxml-->
+<view>
+    <form bindreset="cleanInput">
+        <view style="position: relative; left: 24rpx; top: 57rpx; width: 702rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">商品名称</text>
+            <input style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" bindinput="getName" type="text" placeholder="请输入商品名称" />
+        </view>
+
+        <view style="position: relative; left: 24rpx; top: 106rpx; width: 702rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">商品价格（元）</text>
+            <input style="width: 698rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" bindinput="getPrice" placeholder="请输入商品价格" type="digit"/>
+        </view>
+
+        <button bindtap="addGood" formType="reset" type="primary" style="position: relative; left: 0rpx; top: 178rpx; width: 484rpx; height: 92rpx; display: block; box-sizing: border-box">点击添加商品</button>
+
+    </form>
+
+    <view style="position: relative; left: 24rpx; top: 266rpx; width: 702rpx; height: 336rpx; display: block; box-sizing: border-box">
+        <view wx:for="{{list}}" style="display: flex;">
+            <view style="width: 702rpx; height: 66rpx; display: block; box-sizing: border-box">
+                商品名：{{item.name}}，价格：{{item.price}}元
+            </view>
+            <text bindtap="goDetail" data-id="{{item._id}}" style="color:rgba(80, 157, 245, 0.678); width: 168rpx; height: 44rpx; display: block; box-sizing: border-box">查看详情</text>
+        </view>
+    </view>
+
+    <t-divider style="position: relative; left: 0rpx; top: -134rpx" />
+</view>

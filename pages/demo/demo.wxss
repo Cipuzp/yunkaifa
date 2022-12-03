@@ -1,0 +1,4 @@
+/* pages/demo/demo.wxss */
+input{
+    border:1px solid gray
+}
