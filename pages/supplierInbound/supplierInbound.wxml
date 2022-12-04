@@ -1,0 +1,149 @@
+<!--pages/supplierInbound/supplierInbound.wxml-->
+<scroll-view scroll-y style="height: 2400px;">
+    <view class="wrapper">
+        <wxs module="_">
+            module.exports.contains = function (arr, target) { return arr.indexOf(target) > -1; } 
+        </wxs>
+        <t-collapse value="{{activeValues}}" bind:change="handleChange">
+            <t-collapse-panel header="我方业务说明" header-right-content="{{_.contains(activeValues, 0) ? '收起' : '展开'}}" value="{{0}}" style="position: ; left: 0rpx; top: -2rpx">
+                <text class="yewuText" style="width: 686rpx; height: 484rpx; display: inline-block; box-sizing: border-box">上海价森网络科技有限公司，在江苏南通、上海等地拥有数家社区便利超市。同时在 2022 年正式开启基于快团团的社群团购业务，客流量大且稳定，目前总计跟团人次已达近百万，且还在高速增长阶段。目前主要寻找：服装、食品、个护、日用品等方向的供货商。拒绝：仿牌，低质商品。欢迎优秀的合作伙伴广泛合作。
+
+如有合作意向请填写该系统表单，所有填写该表单的供应商，我方工作人员均会在 7 个工作日内给予反馈意见。
+                </text>
+
+            </t-collapse-panel>
+        </t-collapse>
+    </view>
+
+    <image style="position: relative; left: 0rpx; top: 34rpx" class="jichuxinxiImage" src="../../images/supplierInbound/jichuxinxi.jpg" />
+
+    <form bindsubmit="formSubmit">
+        <view style="position: relative; left: 30rpx; top: 84rpx; width: 690rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">公司名称</text>
+            <text class="xinghao">*</text>
+            <input name="companyName" style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" type="text" value="{{companyName}}" placeholder="请输入公司名称" />
+        </view>
+
+        <view style="position: relative; left: 0rpx; top: 114rpx">
+            <text style="position: relative; left: 30rpx; top: 0rpx">贵方的经营角色</text>
+            <text class="xinghao" style="position: relative; left: 40rpx; top: -2rpx">*</text>
+            <t-radio-group bind:change="onChange" defaultValue="radio1">
+                <t-radio value="radio1" label="源头工厂" />
+                <t-radio value="radio2" label="源头品牌" />
+                <t-radio value="radio3" label="经销商" />
+            </t-radio-group>
+        </view>
+
+        <view style="position: relative; left: 30rpx; top: 172rpx; width: 690rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -24rpx">联系人</text>
+            <text class="xinghao">*</text>
+            <input name="contactPerson" style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" type="text" value="{{contactPerson}}" placeholder="请输入联系人" />
+        </view>
+
+        <view style="position: relative; left: 0rpx; top: 202rpx">
+            <text style="position: relative; left: 30rpx; top: 0rpx">您的职务</text>
+            <text class="xinghao" style="position: relative; left: 40rpx; top: -2rpx">*</text>
+            <t-radio-group bind:change="onChange" defaultValue="radio1">
+                <t-radio value="radio1" label="老板" />
+                <t-radio value="radio2" label="联合创始人" />
+                <t-radio value="radio3" label="经理" />
+                <t-radio value="radio4" label="客服" />
+            </t-radio-group>
+        </view>
+
+        <view style="position: relative; left: 30rpx; top: 253rpx; width: 690rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">您的微信</text>
+            <text class="xinghao">*</text>
+            <input name="contactPerson" style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" type="text" value="{{contactPerson}}" placeholder="请填写您的微信以方便我们及时和您取得联系！" />
+        </view>
+
+        <view style="position: relative; left: 30rpx; top: 292rpx; width: 690rpx; height: 114rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">联系人手机</text>
+            <text class="xinghao">*</text>
+            <input name="contactPerson" style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" type="text" value="{{contactPerson}}" placeholder="请填写您的手机以方便我们及时和您取得联系！" />
+        </view>
+
+        <image style="position: relative; left: 0rpx; top: 392rpx" class="hezuomoshiImage" src="../../images/supplierInbound/hezuomoshi.png" />
+
+
+        <view style="position: relative; left: 30rpx; top: 449rpx; width: 690rpx; height: 328rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: -22rpx">合作模式</text>
+            <text class="xinghao">*</text>
+
+            <view style="width: 690rpx; height: 76rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -25rpx">
+                <text style="position: relative; left: 0rpx; top: 34rpx">是否支持一件代发？</text>
+                <t-radio-group default-value="0" borderless t-class="box" style="position: relative; left: 344rpx; top: -15rpx">
+                    <t-radio block="{{false}}" label="是" value="0" />
+                    <t-radio style="position: relative; left: 98rpx; top: 0rpx" block="{{false}}" label="否" value="1" />
+                </t-radio-group>
+            </view>
+
+            <view style="width: 690rpx; height: 76rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -24rpx">
+                <text style="position: relative; left: 0rpx; top: 34rpx">是否可签合同？</text>
+                <t-radio-group default-value="0" borderless t-class="box" style="position: relative; left: 344rpx; top: -15rpx">
+                    <t-radio block="{{false}}" label="是" value="0" />
+                    <t-radio style="position: relative; left: 98rpx; top: 0rpx" block="{{false}}" label="否" value="1" />
+                </t-radio-group>
+            </view>
+
+            <view style="width: 690rpx; height: 76rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -24rpx">
+                <text style="position: relative; left: 0rpx; top: 34rpx">是否可开具发票？</text>
+                <t-radio-group default-value="0" borderless t-class="box" style="position: relative; left: 344rpx; top: -15rpx">
+                    <t-radio block="{{false}}" label="是" value="0" />
+                    <t-radio style="position: relative; left: 98rpx; top: 0rpx" block="{{false}}" label="否" value="1" />
+                </t-radio-group>
+            </view>
+
+            <view style="width: 690rpx; height: 76rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -24rpx">
+                <text style="position: relative; left: 0rpx; top: 34rpx">是否可开具授权书？</text>
+                <t-radio-group default-value="0" borderless t-class="box" style="position: relative; left: 344rpx; top: -15rpx">
+                    <t-radio block="{{false}}" label="是" value="0" />
+                    <t-radio style="position: relative; left: 98rpx; top: 0rpx" block="{{false}}" label="否" value="1" />
+                </t-radio-group>
+            </view>
+
+        </view>
+
+        <image style="position: relative; left: 0rpx; top: 552rpx" class="shangpinxinxiImage" src="../../images/supplierInbound/shangpinxinxi.png" />
+
+        <view style="position: relative; left: 30rpx; top: 592rpx; width: 690rpx; height: 306rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: 0rpx">商品图片</text>
+            <text style="position: relative; left: -128rpx; top: 40rpx; font-size: 14px; color: #868686">可以上传部分商品图片</text>
+            <view style="position: relative; left: 0rpx; top: 40rpx; font-size: 12px; color: #8F8F8F"> 支持 jpg, png, gif, bmp, psd, tiff 等图片格式</view>
+            <view style="position: relative; left: 0rpx; top: 350rpx; height: 162rpx; width: 690rpx; display: block; box-sizing: border-box">
+                <t-upload style="position: relative; left: 0rpx; top: -300rpx" />
+            </view>
+        </view>
+
+        <view style="position: relative; left: 30rpx; top: 622rpx; width: 690rpx; height: 306rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: 0rpx">快团团二维码</text>
+            <text style="position: relative; left: -192rpx; top: 40rpx; font-size: 14px; color: #868686">如果您有快团团二维码，可以在此上传</text>
+            <view style="position: relative; left: 0rpx; top: 40rpx; font-size: 12px; color: #8F8F8F"> 支持 jpg, png, gif, bmp, psd, tiff 等图片格式</view>
+            <view style="position: relative; left: 0rpx; top: 1090rpx; height: 162rpx; width: 690rpx; display: block; box-sizing: border-box">
+                <t-upload style="position: relative; left: 0rpx; top: -1034rpx" />
+            </view>
+        </view>
+
+
+        <view style="position: relative; left: 30rpx; top: 652rpx; width: 690rpx; height: 225rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: 0rpx">样品寄送方式</text>
+            <text class="xinghao" style="position: relative; left: 15rpx; top: 0rpx">*</text>
+            <view style="position: relative; left: 0rpx; top: 8rpx; font-size: 14px; color: #868686; width: 690rpx; height: 120rpx; display: block; box-sizing: border-box">注意：我方所有选品均需寄送样品，仅接受赠送样品，或选品或返还样品。除生鲜等特殊商品外拒不接受样品购买。</view>
+        </view>
+
+        <view style="position: relative; left: 30rpx; top: 686rpx; width: 690rpx; height: 402rpx; display: block; box-sizing: border-box">
+            <text style="position: relative; left: 0rpx; top: 0rpx">其它信息备注描述</text>
+            <textarea show-confirm-bar="false" show-confirm-bar="true" adjust-position="true" placeholder="可以简要描述贵方及优势" name="textarea" style="height: 320rpx; padding: 6px 6px; border: 1px solid #A0A0A0; left: 0rpx; top: 12rpx; box-sizing: border-box; border-radius: 4px; width: 678rpx; display: block; position: relative" />
+        </view>
+
+
+        <button form-type="submit" type="primary" style="position: relative; left: 0rpx; top: 836rpx; width: 484rpx; height: 92rpx; display: block; box-sizing: border-box">申请入驻</button>
+
+        <t-divider style="position: relative; left: 0rpx; top: -968rpx" />
+        <t-divider style="position: relative; left: 0rpx; top: -1628rpx" />
+
+    </form>
+
+
+
+</scroll-view>

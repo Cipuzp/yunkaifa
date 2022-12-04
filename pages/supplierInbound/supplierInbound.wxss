@@ -1,0 +1,64 @@
+/* pages/supplierInbound/supplierInbound.wxss */
+
+
+
+input {
+    border: 1px solid gray
+}
+
+/**xxx.wxss**/
+/* page {
+    background-color: rgb(242, 242, 242);
+} */
+
+.yewuText {
+
+    /* display: -moz-box;
+    -moz-box-orient: horizontal;
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;  */
+
+    white-space: pre-wrap;
+    font-size: 15px;
+    text-align: justify;
+    display: inline-block;
+
+}
+
+.jichuxinxiImage {
+    position: relative;
+    width: 750rpx;
+    height: 127rpx;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 0rpx;
+    top: 22rpx
+}
+
+.xinghao {
+    color: red;
+    position: relative;
+    left: 12rpx;
+    top: -24rpx
+}
+
+.hezuomoshiImage {
+    position: relative;
+    width: 750rpx;
+    height: 127rpx;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 0rpx;
+    top: 22rpx
+}
+
+.shangpinxinxiImage{
+    position: relative;
+    width: 750rpx;
+    height: 127rpx;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 0rpx;
+    top: 22rpx
+}

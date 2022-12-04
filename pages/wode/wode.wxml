@@ -1,0 +1,6 @@
+<!--pages/wode/wode.wxml-->
+
+<view>
+    <view style="position: relative; left: 24rpx; top: -8rpx">你的 openid 是：</view>
+    <view style="position: relative; left: 24rpx; top: 10rpx">{{openid}}</view>
+</view>

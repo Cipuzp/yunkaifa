@@ -1,13 +1,13 @@
 <!--pages/demoDetail/demoDetail.wxml-->
 <text style="position: relative; left: 24rpx; top: 20rpx">商品名：{{good.name}}，价格：{{good.price}}元</text>
 
-<form bindreset="cleanInput">
+<form bindsubmit="formSubmit">
     <view style="position: relative; left: 24rpx; top: 108rpx; width: 702rpx; height: 116rpx; display: block; box-sizing: border-box">
         <text style="position: relative; left: 0rpx; top: -22rpx">修改商品价格（元）</text>
-        <input style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" bindinput="getUpdatePrice" type="digit" placeholder="请输入需要修改的商品价格" />
+        <input name="updatePrice" style="width: 690rpx; height: 64rpx; display: block; box-sizing: border-box; border-radius: 4px; padding-left: 10px" type="digit" value="{{updateGoodPrice}}" placeholder="请输入需要修改的商品价格" />
     </view>
 
-    <button bindtap="updatePrice" formType="reset" type="primary" style="position: relative; left: 0rpx; top: 178rpx; width: 484rpx; height: 92rpx; display: block; box-sizing: border-box">修改商品价格</button>
+    <button form-type="submit" type="primary" style="position: relative; left: 0rpx; top: 178rpx; width: 484rpx; height: 92rpx; display: block; box-sizing: border-box">修改商品价格</button>
 
 </form>
 

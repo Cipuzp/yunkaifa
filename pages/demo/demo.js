@@ -1,11 +1,13 @@
-let name = ''
-let price = ''
-
 Page({
     data: {
-        list: []
+        list: [],
+        goodName: '',
+        goodPrice: '',
+        openid: ''
     },
-    onLoad() {},
+    onLoad() {
+
+    },
     onShow() {
         this.getList();
     },
@@ -26,42 +28,37 @@ Page({
         wx.navigateTo({
             url: '/pages/demoDetail/demoDetail?id=' + e.currentTarget.dataset.id,
         })
-        // console.log('详情',e.currentTarget.dataset.id)
-        // console.log('详情',e)
     },
-    getName(e) {
-        name = e.detail.value
-        // console.log('获取商品名',name)
-        console.log('getName  e代表：',e)
-    },
-    getPrice(e) {
-        price = e.detail.value
-        // console.log('获取商品价格',price)
-    },
-    cleanInput() {
-        var setName = {
-            sendInfo: this.data.name
+    checkNum(e) {
+        let val = e.replace(/(^\s*)|(\s*$)/g, "")
+        if (!val) {
+            return ''
         }
-        var setPrice = {
-            sendInfo: this.data.price
-        }
-        this.setData(setName)
-        this.setData(setPrice)
+        var reg = /[^\d.]/g
+        // 只能是数字和小数点，不能是其他输入
+        val = val.replace(reg, "")
+        // // 保证第一位只能是数字，不能是点
+        val = val.replace(/^\./g, "");
+        // // 小数只能出现1位
+        val = val.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+        // // 小数点后面保留2位
+        val = val.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3');
+        console.log('val', val);
+        return val
     },
-    addGood(e) {
-        // console.log('addGood  e代表：',e)
-
-        if (name == '' && e.price != '') {
+    formSubmit(e) {
+        // console.log(e.detail.value.good)
+        if (e.detail.value.good == '') {
             wx.showToast({
                 title: '请输入商品名称',
                 icon: 'error'
             })
-        } else if (price == '' && name != '') {
+        } else if (e.detail.value.price == '') {
             wx.showToast({
                 title: '请输入商品价格',
                 icon: 'error'
             })
-        } else if (name == '' && price == '') {
+        } else if (e.detail.value.good == '' && e.detail.value.price == '') {
             wx.showModal({
                 title: '',
                 showCancel: false,
@@ -69,24 +66,44 @@ Page({
                 confirmText: '我知道了'
             })
         } else {
-            // console.log('keyile')
-            wx.cloud.database().collection('goods')
-                .add({
-                    data: {
-                        name,
-                        price
-                    }
-                })
-                .then(res => {
-                    // console.log('成功')
-                    this.getList();
-                    wx.showToast({
-                        title: '添加成功~',
+            if (this.checkNum(e.detail.value.price) && this.checkNum(e.detail.value.price) == e.detail.value.price) {
+                // console.log('keyile')
+                wx.cloud.database().collection('goods')
+                    .add({
+                        data: {
+                            name: e.detail.value.good,
+                            price: this.checkNum(e.detail.value.price)
+                        }
                     })
+                    .then(res => {
+                        // console.log('成功')
+                        this.getList();
+                        wx.showToast({
+                            title: '添加成功~',
+                        })
+                        // this.onLoad()
+                        this.setData({
+                            goodName: '',
+                            goodPrice: ''
+
+                        })
+                    })
+                    .catch(err => {
+                        // console.log('失败')
+                    })
+            } else {
+                wx.showModal({
+                    title: '',
+                    showCancel: false,
+                    content: '价格只能为整数或「2位及以内小数点」的小数，请重新输入',
+                    confirmText: '我知道了'
                 })
-                .catch(err => {
-                    // console.log('失败')
+                this.setData({
+                    goodPrice: ''
                 })
+
+            }
+
         }
     },
     onShareAppMessage() {

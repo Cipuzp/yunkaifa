@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "miniprogram-sm-crypto": "^0.3.11",
-    "tdesign-miniprogram": "^0.28.0-beta.1"
+    "tdesign-miniprogram": "^0.28.0-beta.1",
+    "wx-server-sdk": "^2.6.3"
   }
 }
