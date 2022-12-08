@@ -1,8 +1,6 @@
 {
     "component": true,
     "usingComponents": {
-        "t-collapse-panel": "/miniprogram_npm/tdesign-miniprogram/collapse/collapse-panel",
-        "t-collapse": "/miniprogram_npm/tdesign-miniprogram/collapse/collapse",
         "t-radio": "/miniprogram_npm/tdesign-miniprogram/radio/radio",
         "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
         "t-sticky": "tdesign-miniprogram/sticky/sticky",
